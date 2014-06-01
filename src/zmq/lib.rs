@@ -153,7 +153,7 @@ impl Constants {
     }
 }
 
-#[deriving(Clone, Eq, TotalEq)]
+#[deriving(Clone, PartialEq, Eq)]
 pub enum Error {
     EACCES          = posix88::EACCES,
     EADDRINUSE      = posix88::EADDRINUSE,
