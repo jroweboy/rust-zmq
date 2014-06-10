@@ -3,7 +3,7 @@
 #![crate_id="github.com/erickt/rust-zmq#0.5-pre"]
 
 #![feature(phase)]
-#[phase(syntax, link)] extern crate log;
+#[phase(plugin, link)] extern crate log;
 
 extern crate libc;
 
