@@ -1,10 +1,14 @@
 //! Module: zmq
 
-#![crate_id="github.com/erickt/rust-zmq#0.5-pre"]
+#![crate_id = "zmq#0.5-pre"]
+
+#![comment = "Rust bindings for 0MQ"]
+#![license = "MIT/ASL2"]
+#![crate_type = "dylib"]
+#![crate_type = "rlib"]
 
 #![feature(phase)]
 #[phase(plugin, link)] extern crate log;
-
 extern crate libc;
 
 use libc::{c_int, c_long, c_void, size_t, c_char};
@@ -292,7 +296,7 @@ impl Context {
 
 impl Drop for Context {
     fn drop(&mut self) {
-        debug!("context dropped");
+        // debug!("context dropped");
         let mut e = self.destroy();
         while e.is_err() && (e.unwrap_err() != EFAULT) {
             e = self.destroy();
@@ -308,7 +312,7 @@ pub struct Socket {
 impl Drop for Socket {
     fn drop(&mut self) {
         match self.close_final() {
-            Ok(()) => { debug!("socket dropped") },
+            Ok(()) => { /*debug!("socket dropped")*/ },
             Err(e) => fail!(e.to_str())
         }
     }
